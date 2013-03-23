@@ -1,0 +1,16 @@
+{
+    "minimum-stability": "dev",
+    "autoload":          {
+        "psr-0": {
+            "": "src/"
+        }
+    },
+    "require":           {
+        "silex/silex":   "1.0.*",
+        "doctrine/dbal": "2.2.*",
+        "twig/twig":     "*",
+        "symfony/yaml":  "*",
+
+        "igorw/config-service-provider": "*"
+    }
+}

@@ -1,0 +1,13 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Package list{% endblock %}
+
+{% block body %}
+  <h1>Package list</h1>
+  {% for package in packages %}
+    <div class="package">
+      <h3>{{ package.class }}</h3>
+      <p>{{ package.title }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}

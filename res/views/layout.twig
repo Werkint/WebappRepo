@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    {% block thetitle %}Werkint Webapp: {% block title %}{% endblock %}{% endblock %}
+  </title>
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+<div class="layout_cont">
+  {% block body %}{% endblock %}
+</div>
+</body>
+</html>

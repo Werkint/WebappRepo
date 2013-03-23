@@ -1,0 +1,7 @@
+db.options:
+    driver:   pdo_mysql
+    charset:  utf8_general_ci
+    host:     localhost
+    dbname:   werkint_webapp
+    user:     werkint_webapp
+    password: werkint_webapp
