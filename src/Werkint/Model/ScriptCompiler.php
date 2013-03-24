@@ -1,7 +1,5 @@
 <?php
-namespace Werkint;
-
-use \ZipArchive;
+namespace Werkint\Model;
 
 class ScriptCompiler
 {

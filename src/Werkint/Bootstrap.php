@@ -5,7 +5,8 @@ use Silex\Application,
     Symfony\Component\HttpFoundation\Request,
     Igorw\Silex\ConfigServiceProvider,
     Silex\Provider\DoctrineServiceProvider,
-    Silex\Provider\TwigServiceProvider;
+    Silex\Provider\TwigServiceProvider,
+    Werkint\Service\Packages;
 
 /**
  * Основной класс для настройки приложения
@@ -27,6 +28,21 @@ class Bootstrap
 
     public function init()
     {
+        // Настройки проекта
+        $config = $this->respath . '/config';
+        $config = glob($config . '/*.yml');
+        foreach ($config as $file) {
+            $this->app->register(new ConfigServiceProvider($file));
+        }
+
+        // База данных (настройки в yaml)
+        $this->app->register(new DoctrineServiceProvider());
+
+        // Twig
+        $this->app->register(new TwigServiceProvider(), [
+            'twig.path' => $this->respath . '/views',
+        ]);
+
         $this->initServices();
         $this->initControllers();
         return $this->app;
@@ -56,30 +72,26 @@ class Bootstrap
 
         // Список пакетов
         $this->app->get('/packages', function () {
+            $list = $this->app['webapp.packages'];
             return $this->app['twig']->render('packages.twig', array(
-                'packages' => [['class' => 'werkint.jquery', 'title' => 'jQuery plugin full']],
+                'packages' => $list,
             ));
+        });
+
+        // Login and registration
+        $this->app->get('/login', function () {
+            return $this->app['twig']->render('login.twig');
         });
     }
 
     /**
-     * Инициализирует сервисы
+     * Инициализирует основные службы
      */
     protected function initServices()
     {
-        // Настройки проекта
-        $config = $this->respath . '/config';
-        $config = glob($config . '/*.yml');
-        foreach ($config as $file) {
-            $this->app->register(new ConfigServiceProvider($file));
-        }
-
-        // База данных (настройки в yaml)
-        $this->app->register(new DoctrineServiceProvider());
-
-        // Twig
-        $this->app->register(new TwigServiceProvider(), [
-            'twig.path' => $this->respath . '/views',
-        ]);
+        // Пакеты в репозитарии
+        $this->app['webapp.packages'] = $this->app->share(function (Application $app) {
+            new Packages($app, $this->respath . '/packages');
+        });
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Werkint;
+namespace Werkint\Model;
 
 use \ZipArchive;
 

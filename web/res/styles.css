@@ -1,0 +1,43 @@
+body, html {
+    background: #EEE;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-size: 14px;
+}
+.layout_cont {
+    margin: 0 auto;
+    width: 800px;
+    background: #d1d1d1;
+}
+.layout_cont .header {
+    padding-left: .5em;
+    margin-bottom: .5em;
+}
+.layout_cont .header h1 {
+    font-size: 1.5em;
+    font-family: serif;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+.layout_cont .header .menu {
+    float: right;
+}
+.layout_cont .header .menu a {
+    display: inline-block;
+    background: #BBB;
+    padding: .2em .4em;
+    text-decoration: none;
+    color: #000000;
+}
+.layout_cont .body {
+    padding: .5em;
+}
+.layout_cont .body h1 {
+    font-size: 1.1em;
+    text-align: center;
+    background: #f2f0ff;
+    padding: .2em 0;
+}
