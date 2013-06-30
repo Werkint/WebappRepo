@@ -5,12 +5,12 @@
             "": "src/"
         }
     },
+    "version":           "1.0.0",
     "require":           {
-        "silex/silex":   "1.0.*",
-        "doctrine/dbal": "2.2.*",
-        "twig/twig":     "*",
-        "symfony/yaml":  "*",
-
+        "silex/silex":                   "1.0.*",
+        "doctrine/dbal":                 "2.2.*",
+        "twig/twig":                     "*",
+        "symfony/yaml":                  "*",
         "igorw/config-service-provider": "*"
     }
 }
